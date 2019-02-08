@@ -16,8 +16,27 @@ public class QueenBoard {
     }
     return s;
   }
-  public boolean solve() {
-    
+  public boolean solve(int[][] board, int r, int c) {
+    return true;
+  }
+  public void deathRays(int[][] board, int r, int c, int aor) {
+    int qr1 = r;
+    int qc1 = c;
+    while(qc1 < board[r].length && qr1 < board.length) {
+      board[qr1][qc1] = aor;
+      qr1++;
+      qc1++;
+    }
+    int qr2 = r;
+    int qc2 = c;
+    while(qc2 >= 0 && qr2 < board.length) {
+      board[qr2][qc2] = aor;
+      qr2++;
+      qc2--;
+    }
+    for(int qc3 = c; qc3 < board[r].length; qc3++) {
+      board[r][qc3] = aor;
+    }
   }
   private boolean rq(int r, int c) {
     board[r][c] = 0;
