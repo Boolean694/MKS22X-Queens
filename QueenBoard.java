@@ -43,6 +43,7 @@ public class QueenBoard {
         }
       }
     }
+    System.out.println(board.toString());
     return true;
   }
   public void deathRays(int[][] board, int r, int c, int aor) {
