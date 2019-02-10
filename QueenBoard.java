@@ -24,7 +24,14 @@ public class QueenBoard {
       for(int w = 0; w < board[q].length; w++) {
         if(board[q][w] == -1) {
           if(w + 1 == board[q].length) {
-
+            q--;
+            for(int e = 0; e < board[q].length; e++) {
+              if(board[q][e] == -1) {
+                w = e;
+                rq(q, w);
+                return sh(q, w + 1);
+              }
+            }
           }
           else {
             return sh(q, w + 1);
@@ -39,6 +46,7 @@ public class QueenBoard {
     return true;
   }
   public void deathRays(int[][] board, int r, int c, int aor) {
+    //bottom right
     int qr1 = r;
     int qc1 = c;
     while(qc1 < board[r].length && qr1 < board.length) {
@@ -46,6 +54,7 @@ public class QueenBoard {
       qr1++;
       qc1++;
     }
+    //bottom left
     int qr2 = r;
     int qc2 = c;
     while(qc2 >= 0 && qr2 < board.length) {
@@ -53,8 +62,9 @@ public class QueenBoard {
       qr2++;
       qc2--;
     }
-    for(int qc3 = c; qc3 < board[r].length; qc3++) {
-      board[r][qc3] = aor;
+    //down
+    for(int qr3 = r; qr3 < board.length; qr3++) {
+      board[qr3][c] = aor;
     }
   }
   private boolean rq(int r, int c) {
