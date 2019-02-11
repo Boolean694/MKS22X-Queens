@@ -3,6 +3,11 @@ public class QueenBoard {
   private int nq;
   public QueenBoard(int size) {
     board = new int[size][size];
+    for(int q = 0; q < board.length; q++) {
+      for(int w = 0; w < board[q].length; w++) {
+        board[q][w] = 0;
+      }
+    }
     nq = 0;
   }
   public String toString() {
@@ -20,28 +25,31 @@ public class QueenBoard {
     return sh(0, 0);
   }
   public boolean sh(int r, int c) {
+    //if row counter end
     if(r >= board.length) {
       for(int q = 0; q < board.length; q++) {
         for(int w = 0; w < board[q].length; w++) {
           if(board[q][w] == -1) {
             break;
           }
-          System.out.println(board.toString());
+          System.out.println(this.toString());
           return false;
         }
       }
-      System.out.println(board.toString());
+      System.out.println(this.toString());
       return true;
     }
+    //if col counter end of row, only happens when queen can't be placed in row
     else if(c >= board[r].length) {
-      r--;
-      for(int w = 0; w < board[r].length; w++) {
+      r--; //go back one row
+      for(int w = 0; w < board[r].length; w++) { //cycle through prev row and check for queen, remove when found
         if(board[r][w] == -1) {
           rq(r, c);
           return sh(r, c + 1);
         }
       }
     }
+    //not end col or row
     else {
       if(board[r][c] != 0) {
         return sh(r, c + 1);
@@ -59,6 +67,7 @@ public class QueenBoard {
     while(qc1 < board[r].length && qr1 < board.length) {
       board[qr1][qc1]++;
       qr1++;
+
       qc1++;
     }
     //bottom left
@@ -108,8 +117,7 @@ public class QueenBoard {
   }
   public static void main(String[] args) {
     QueenBoard test = new QueenBoard(4);
-    boolean b = test.solve();
-    System.out.println(b);
-    System.out.println(test.toString());
+    /*boolean b = test.solve();
+    System.out.println(b);*/
   }
 }
