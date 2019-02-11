@@ -1,6 +1,6 @@
 public class QueenBoard {
   private int[][] board;
-  private int nq;
+  private int nq; //num queens
   public QueenBoard(int size) {
     board = new int[size][size];
     for(int q = 0; q < board.length; q++) {
@@ -24,20 +24,10 @@ public class QueenBoard {
   public boolean solve() {
     return sh(0, 0);
   }
-  public boolean sh(int r, int c) {
-    //if row counter end
+  public boolean sh(int r) {
+  /*  //if row counter end
     if(r >= board.length) {
-      for(int q = 0; q < board.length; q++) {
-        for(int w = 0; w < board[q].length; w++) {
-          if(board[q][w] == -1) {
-            break;
-          }
-          System.out.println(this.toString());
-          return false;
-        }
-      }
-      System.out.println(this.toString());
-      return true;
+      return this.nq == this.size;
     }
     //if col counter end of row, only happens when queen can't be placed in row
     else if(c >= board[r].length) {
@@ -58,7 +48,15 @@ public class QueenBoard {
         return sh(r + 1, 0);
       }
     }
-    return false;
+    return false; */
+    if(r >= board.length) {
+      return true;
+    }
+    for(int q = 0; q < board.length; q++) {
+      if(aq(r, q)) {
+        if(sh)
+      }
+    }
   }
   public void deathRaysAdd(int[][] board, int r, int c) {
     //bottom right
@@ -108,11 +106,14 @@ public class QueenBoard {
   private boolean rq(int r, int c) {
     deathRaysDel(board, r, c);
     board[r][c] = 0;
+    nq--;
     return true;
   }
   private boolean aq(int r, int c) {
+    if(board[r][c] != 0) {return false;}
     deathRaysAdd(board, r, c);
     board[r][c] = -1;
+    nq++;
     return true;
   }
   public static void main(String[] args) {
