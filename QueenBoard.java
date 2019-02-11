@@ -10,7 +10,7 @@ public class QueenBoard {
     for(int q = 0; q < board.length; q++) {
       for(int w = 0; w < board[q].length; w++) {
         if(board[q][w] == -1) {s += "Q";}
-        else {s += "_";}
+        else {s += "" + board[q][w];}
       }
       s += "\n";
     }
@@ -26,10 +26,31 @@ public class QueenBoard {
           if(board[q][w] == -1) {
             break;
           }
+          System.out.println(board.toString());
           return false;
         }
       }
+      System.out.println(board.toString());
+      return true;
     }
+    else if(c >= board[r].length) {
+      r--;
+      for(int w = 0; w < board[r].length; w++) {
+        if(board[r][w] == -1) {
+          rq(r, c);
+          return sh(r, c + 1);
+        }
+      }
+    }
+    else {
+      if(board[r][c] != 0) {
+        return sh(r, c + 1);
+      }
+      else {
+        return sh(r + 1, 0);
+      }
+    }
+    return false;
   }
   public void deathRaysAdd(int[][] board, int r, int c) {
     //bottom right
@@ -81,12 +102,14 @@ public class QueenBoard {
     return true;
   }
   private boolean aq(int r, int c) {
-    deathRaysAdd(board, r, c, 1);
+    deathRaysAdd(board, r, c);
     board[r][c] = -1;
     return true;
   }
   public static void main(String[] args) {
     QueenBoard test = new QueenBoard(4);
-    test.solve();
+    boolean b = test.solve();
+    System.out.println(b);
+    System.out.println(test.toString());
   }
 }
