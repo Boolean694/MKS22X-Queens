@@ -22,9 +22,9 @@ public class QueenBoard {
     return s;
   }
   public boolean solve() {
-    return sh(0, 0);
+    return sh(0);
   }
-  public boolean sh(int r, int c) {
+  public boolean sh(int r) {
   /*  //if row counter end
     if(r >= board.length) {
       return this.nq == this.size;
@@ -52,16 +52,15 @@ public class QueenBoard {
     if(r >= board.length) {
       return true;
     }
-    for(int q = 0; q < board.length; q++) {
-      if(aq(r, q)) {
-        if(sh(r, r)) {
-          return this.nq == this.board.length;
+    for(int q = 0; q < board[r].length; q++) {
+      if(aq(r,q)) {
+        if(sh(r + 1)) {
+          return true;
         }
-      }
-      else {
-        return sh(r, r + 1);
+        rq(r, q);
       }
     }
+    return false;
   }
   public void deathRaysAdd(int[][] board, int r, int c) {
     //bottom right
@@ -122,8 +121,9 @@ public class QueenBoard {
     return true;
   }
   public static void main(String[] args) {
-    QueenBoard test = new QueenBoard(4);
-    /*boolean b = test.solve();
-    System.out.println(b);*/
+    QueenBoard test = new QueenBoard(3);
+    boolean b = test.solve();
+    System.out.println(b);
+    System.out.println(test);
   }
 }
