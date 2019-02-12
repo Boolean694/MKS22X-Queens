@@ -15,7 +15,7 @@ public class QueenBoard {
     for(int q = 0; q < board.length; q++) {
       for(int w = 0; w < board[q].length; w++) {
         if(board[q][w] == -1) {s += "Q";}
-        else {s += "" + board[q][w];}
+        else {s += "_";}
       }
       s += "\n";
     }
@@ -121,7 +121,7 @@ public class QueenBoard {
     return true;
   }
   public static void main(String[] args) {
-    QueenBoard test = new QueenBoard(3);
+    QueenBoard test = new QueenBoard(4);
     boolean b = test.solve();
     System.out.println(b);
     System.out.println(test);
