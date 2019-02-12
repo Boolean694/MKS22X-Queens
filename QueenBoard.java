@@ -24,7 +24,7 @@ public class QueenBoard {
   public boolean solve() {
     return sh(0, 0);
   }
-  public boolean sh(int r) {
+  public boolean sh(int r, int c) {
   /*  //if row counter end
     if(r >= board.length) {
       return this.nq == this.size;
@@ -54,7 +54,12 @@ public class QueenBoard {
     }
     for(int q = 0; q < board.length; q++) {
       if(aq(r, q)) {
-        if(sh)
+        if(sh(r, r)) {
+          return this.nq == this.board.length;
+        }
+      }
+      else {
+        return sh(r, r + 1);
       }
     }
   }
