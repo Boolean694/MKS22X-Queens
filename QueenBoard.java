@@ -61,7 +61,6 @@ public class QueenBoard {
         rq(r, q);
       }
     }
-    c();
     return co;
   }
   public boolean sh(int r) {
@@ -137,10 +136,10 @@ public class QueenBoard {
     return true;
   }
   public static void main(String[] args) {
-    QueenBoard test = new QueenBoard(4);
-    boolean b = test.solve();
+    QueenBoard test = new QueenBoard(15);
+    /*boolean b = test.solve();
     System.out.println(b);
-    System.out.println(test);
+    System.out.println(test);*/
     int n = test.countSolutions();
     System.out.println(n);
     System.out.println(test);
