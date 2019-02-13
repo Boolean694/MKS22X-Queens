@@ -39,9 +39,15 @@ public class QueenBoard {
     return s;
   }
   public boolean solve() {
+    if(bnc()) {
+      throw new IllegalStateException("Board must be cleared before solve() is run");
+    }
     return sh(0);
   }
   public int countSolutions() {
+    if(bnc()) {
+      throw new IllegalStateException("Board must be cleared before solve() is run");
+    }
     return csh(0);
   }
   public int csh(int r) {
@@ -59,30 +65,6 @@ public class QueenBoard {
     return co;
   }
   public boolean sh(int r) {
-  /*  //if row counter end
-    if(r >= board.length) {
-      return this.nq == this.size;
-    }
-    //if col counter end of row, only happens when queen can't be placed in row
-    else if(c >= board[r].length) {
-      r--; //go back one row
-      for(int w = 0; w < board[r].length; w++) { //cycle through prev row and check for queen, remove when found
-        if(board[r][w] == -1) {
-          rq(r, c);
-          return sh(r, c + 1);
-        }
-      }
-    }
-    //not end col or row
-    else {
-      if(board[r][c] != 0) {
-        return sh(r, c + 1);
-      }
-      else {
-        return sh(r + 1, 0);
-      }
-    }
-    return false; */
     if(r >= board.length) {
       return true;
     }
