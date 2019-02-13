@@ -27,11 +27,10 @@ public class QueenBoard {
   public int countSolutions() {
     return csh(0);
   }
-  public int csh(int co) {
-    if(sh(co)) {
-      co++;
+  public int csh(int r) {
+    if(r >= board.length) {
+      return co++;
     }
-    return co;
   }
   public boolean sh(int r) {
   /*  //if row counter end
