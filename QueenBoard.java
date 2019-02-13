@@ -36,6 +36,7 @@ public class QueenBoard {
         return 1 + csh(r + 1);
       }
     }
+    return co;
   }
   public boolean sh(int r) {
   /*  //if row counter end
