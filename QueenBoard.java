@@ -28,13 +28,15 @@ public class QueenBoard {
     return csh(0);
   }
   public int csh(int r) {
+    int co = 0;
     if(r >= board.length) {
       return 1;
     }
     for(int q = 0; q < board[r].length; q++) {
       if(aq(r, q)) {
-        return 1 + csh(r + 1);
+        co += csh(r + 1);
       }
+      rq(r, q);
     }
     return co;
   }
@@ -140,7 +142,7 @@ public class QueenBoard {
     System.out.println(b);
     System.out.println(test);
     int n = test.countSolutions();
-    System.out.println(b);
+    System.out.println(n);
     System.out.println(test);
   }
 }
