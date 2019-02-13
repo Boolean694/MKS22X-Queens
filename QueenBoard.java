@@ -24,6 +24,9 @@ public class QueenBoard {
   public boolean solve() {
     return sh(0);
   }
+  public int countSolutions() {
+    int co = 0;
+  }
   public boolean sh(int r) {
   /*  //if row counter end
     if(r >= board.length) {
@@ -121,7 +124,7 @@ public class QueenBoard {
     return true;
   }
   public static void main(String[] args) {
-    QueenBoard test = new QueenBoard(4);
+    QueenBoard test = new QueenBoard(8);
     boolean b = test.solve();
     System.out.println(b);
     System.out.println(test);
