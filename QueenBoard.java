@@ -25,10 +25,13 @@ public class QueenBoard {
     return sh(0);
   }
   public int countSolutions() {
-    int co = 0;
-    if(countSolutions()) {
-      what
+    return csh(0);
+  }
+  public int csh(int co) {
+    if(sh(co)) {
+      co++;
     }
+    return co;
   }
   public boolean sh(int r) {
   /*  //if row counter end
@@ -127,8 +130,11 @@ public class QueenBoard {
     return true;
   }
   public static void main(String[] args) {
-    QueenBoard test = new QueenBoard(8);
+    QueenBoard test = new QueenBoard(4);
     boolean b = test.solve();
+    System.out.println(b);
+    System.out.println(test);
+    int n = test.countSolutions();
     System.out.println(b);
     System.out.println(test);
   }
