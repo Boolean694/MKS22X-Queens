@@ -10,6 +10,23 @@ public class QueenBoard {
     }
     nq = 0;
   }
+  public void c() { //clear
+    for(int q = 0; q < board.length; q++) {
+      for(int w = 0; w < board[q].length; w++) {
+        board[q][w] = 0;
+      }
+    }
+  }
+  public boolean bnc() { //board not clear?
+    for(int q = 0; q < board.length; q++) {
+      for(int w = 0; w < board[q].length; w++) {
+        if(board[q][w] != 0) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
   public String toString() {
     String s = "";
     for(int q = 0; q < board.length; q++) {
@@ -35,9 +52,10 @@ public class QueenBoard {
     for(int q = 0; q < board[r].length; q++) {
       if(aq(r, q)) {
         co += csh(r + 1);
+        rq(r, q);
       }
-      rq(r, q);
     }
+    c();
     return co;
   }
   public boolean sh(int r) {
