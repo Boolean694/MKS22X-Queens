@@ -29,7 +29,12 @@ public class QueenBoard {
   }
   public int csh(int r) {
     if(r >= board.length) {
-      return co++;
+      return 1;
+    }
+    for(int q = 0; q < board[r].length; q++) {
+      if(aq(r, q)) {
+        return 1 + csh(r + 1);
+      }
     }
   }
   public boolean sh(int r) {
