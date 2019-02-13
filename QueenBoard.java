@@ -26,6 +26,9 @@ public class QueenBoard {
   }
   public int countSolutions() {
     int co = 0;
+    if(countSolutions()) {
+      what
+    }
   }
   public boolean sh(int r) {
   /*  //if row counter end
